@@ -6,8 +6,8 @@ import { FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 const Register = () => {
     const [visible, setVisible] = useState(false)
-    const { createUser, updateUserProfile } = useContext(AuthContext)
-    const handleToSubmit = e => {
+    const { createUser, updateUserProfile,setUser,user } = useContext(AuthContext)
+    const handleToSubmit =async (e) => {
         e.preventDefault()
         const form = e.target
         const email = form.email.value
@@ -38,13 +38,15 @@ const Register = () => {
             });
             return
         }
-        createUser(email, password)
-            .then(() => {
-                updateUserProfile(name, photURL)
+        try{
+     const result=await createUser(email, password)
+            .then( async() => {
+               await updateUserProfile(name, photURL)
+                setUser[{...user,displayName:name,photURL:photURL}]
                 Swal.fire({
                     position: "top-center",
                     icon: "success",
-                    title: "Your work has been saved",
+                    title: "Registration success",
                     showConfirmButton: false,
                     timer: 1500
                 });
@@ -56,14 +58,24 @@ const Register = () => {
                     text: `${err.message}`,
 
                 });
-            })
+            
+            })     
     }
+    catch(err){
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: `${err.message}`,
+
+        });
+    }
+}
     return (
         <section className="dark:bg-gray-900 Rbg">
             <div className="container flex items-center justify-center min-h-screen px-6 mx-auto">
                 <form className="w-full max-w-md" onSubmit={handleToSubmit}>
                     <div className="flex justify-center mx-auto">
-                        {/* <img className="w-auto h-7 sm:h-8" src="https://merakiui.com/images/logo.svg" alt=""/> */}
+                        
                     </div>
 
                     <div className="flex items-center justify-center mt-6">

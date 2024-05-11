@@ -1,7 +1,73 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaGithub } from "react-icons/fa";
 import logo from '../assets/hub-logo.png'
+import { useContext } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
+import Swal from 'sweetalert2'
 const Login = () => {
+    const {signIn,signInWithGoogle,sinInWithGithub}=useContext(AuthContext)
+    const navigate=useNavigate()
+    const handleToSubmit= async e=>{
+        e.preventDefault()
+        const form=e.target 
+        const email=form.email.value
+        const password=form.password.value
+      try{
+        signIn(email,password)
+        .then(()=>{
+            Swal.fire({
+                position: "top-center",
+                icon: "success",
+                title: "Login success",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            navigate('/')
+        })
+      }
+      catch(err){
+
+      }
+    }
+    const handleToGoogleLogin=async e=>{
+      const result=await signInWithGoogle()
+      .then(()=>{
+        Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: " Login with Google success",
+            showConfirmButton: false,
+            timer: 1500
+        });
+      })
+      .catch((err)=>{
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: `${err.message}`,
+        });
+      })
+        
+    }
+    const handleToGitHubLogin = async e=>{
+      const result=await  sinInWithGithub()
+      .then(()=>{
+        Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: " Login with GitHub success",
+            showConfirmButton: false,
+            timer: 1500
+        });
+      })
+      .catch((err)=>{
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: `${err.message}`,
+        });
+      })
+    }
     return (
         <div className="Lbg py-10">
         <div class=" w-full max-w-sm p-6 m-auto mx-auto bg-[#ffffff4b] rounded-lg shadow-md dark:bg-gray-800">
@@ -9,19 +75,19 @@ const Login = () => {
             <img class="w-auto h-10 " src={logo} alt=""/>
         </div>
     
-        <form class="mt-6">
+        <form class="mt-6" onSubmit={handleToSubmit}>
             <div>
                 <label for="username" class="block text-sm text-gray-800 dark:text-gray-200">Email</label>
-                <input type="email" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" />
+                <input type="email" name="email" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" />
             </div>
     
             <div class="mt-4">
                 <div class="flex items-center justify-between">
                     <label for="password" class="block text-sm text-gray-800 dark:text-gray-200">Password</label>
-                    <a href="#" class="text-xs text-gray-600 dark:text-gray-400 hover:underline">Forget Password?</a>
+                    <a href="#" class="text-xs text-gray-200 dark:text-gray-400 hover:underline">Forget Password?</a>
                 </div>
     
-                <input type="password" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" />
+                <input type="password" name="password" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" />
             </div>
     
             <div class="mt-6">
@@ -48,12 +114,12 @@ const Login = () => {
                     </path>
                 </svg>
     
-                <span class="hidden mx-2 sm:inline">Sign in with Google</span>
+                <span class="hidden mx-2 sm:inline" onClick={handleToGoogleLogin}>Sign in with Google</span>
             </button>
     
-            <a href="#" class="p-2 mx-2 text-sm font-medium text-gray-500 transition-colors duration-300 transform bg-[#0A192F] rounded-lg hover:bg-gray-200">
+            <span onClick={handleToGitHubLogin} class="p-2 mx-2 text-sm font-medium text-gray-500 transition-colors duration-300 transform bg-[#0A192F] rounded-lg hover:bg-gray-200">
                 <FaGithub className="text-2xl"></FaGithub>
-            </a>
+            </span>
         </div>
     
         <p class="mt-8 text-xs font-light text-center text-gray-400"> Don't have an account? <Link to='/register' class="font-medium text-xl text-gray-200 dark:text-gray-200 hover:underline">Create One</Link></p>
