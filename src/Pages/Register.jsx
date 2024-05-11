@@ -1,7 +1,7 @@
 
 const Register = () => {
     return (
-        <section className=" dark:bg-gray-900 bg-black">
+        <section className="dark:bg-gray-900 Rbg">
     <div className="container flex items-center justify-center min-h-screen px-6 mx-auto">
         <form className="w-full max-w-md">
             <div className="flex justify-center mx-auto">
@@ -11,7 +11,7 @@ const Register = () => {
             <div className="flex items-center justify-center mt-6">
                
 
-                <a href="#" className="w-1/3 pb-4 font-medium text-center text-gray-800 capitalize border-b-2 border-blue-500 dark:border-blue-400 dark:text-white">
+                <a href="#" className="w-1/3 pb-4 font-medium text-center capitalize border-b-2 border-blue-500 dark:border-blue-400 dark:text-white text-white">
                     sign up
                 </a>
             </div>
@@ -66,7 +66,7 @@ const Register = () => {
             </div>
 
             <div className="mt-6">
-                <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+                <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-[#0A192F] rounded-lg hover:shadow-md focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
                     Sign Up
                 </button>
 

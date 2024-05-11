@@ -49,3 +49,14 @@
     background-position:center;
     object-fit: cover;
   }
+
+  .Rbg{
+    background-image: url('https://i.ibb.co/XytksW2/dark-theme-background-ggk0hcv04mujwx47.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .Lbg{
+    background-image: url('https://i.ibb.co/j4Sy7DS/cool-dark-wooden-wall-uqxzonyuol5hwv8y.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
