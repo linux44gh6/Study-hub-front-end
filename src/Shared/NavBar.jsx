@@ -1,13 +1,14 @@
 import { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+
 import { AuthContext } from "../Provider/AuthProvider";
 import logo from '../assets/hub-logo.png'
+import { NavLink } from "react-router-dom";
 const NavBar = () => {
     const {user}=useContext(AuthContext)
     const link=<>
-       <li><NavLink className={({isActive})=>isActive?"":" font-semibold"}>Assignments</NavLink></li>
-       <li><NavLink className={({isActive})=>isActive?"":" font-semibold"}>Create Assignments</NavLink></li>
-       <li><NavLink className={({isActive})=>isActive?"":" font-semibold"}>Pending Assignments</NavLink></li>
+       <li><NavLink className={({isActive})=>isActive?"":" font-semibold bg-black"}>Assignments</NavLink></li>
+       <li><NavLink className={({isActive})=>isActive?"":" font-semibold bg-black"}>Create Assignments</NavLink></li>
+       <li><NavLink className={({isActive})=>isActive?"":" font-semibold bg-black"}>Pending Assignments</NavLink></li>
     </>
     return (
         <div className="navbar bg-base-100 h-20 shadow">
@@ -61,13 +62,13 @@ const NavBar = () => {
                     <button className='bg-gray-200 block text-center'>Logout</button>
                   </li>
                 </ul>
-              </div></>:<> <ul className='menu menu-horizontal px-1'>
+              </div></>:<> <ul className='gap-5 menu-horizontal px-1'>
           
           <li>
-            <div>Login</div>
+            <NavLink to='/login'>Login</NavLink>
           </li>
           <li>
-            <div>Registration</div>
+            <NavLink to='/register'>Registration</NavLink>
           </li>
         </ul></>
             }
