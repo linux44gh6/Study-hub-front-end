@@ -38,8 +38,10 @@ import Update from "../Pages/Update";
               element:<Assignment></Assignment>
             },
             {
-              path:'/update',
-              element:<Update></Update>
+              path:'/update/:id',
+              element:<Update></Update>,
+              loader:({params})=>fetch(`${import.meta.env.VITE_URL}/Assignment/${params.id}`)
+              
             }
         ]
     }
