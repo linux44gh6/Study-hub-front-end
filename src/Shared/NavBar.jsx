@@ -7,7 +7,7 @@ const NavBar = () => {
     const {user,logOut}=useContext(AuthContext)
     console.log();
     const link=<>
-       <li><NavLink className={({isActive})=>isActive?"":" font-semibold b"}>Assignments</NavLink></li>
+       <li><NavLink to='/allAssignments' className={({isActive})=>isActive?"":" font-semibold b"}>Assignments</NavLink></li>
        <li><NavLink to='/createAssaignment' className={({isActive})=>isActive?"":" font-semibold "}>Create Assignments</NavLink></li>
        <li><NavLink className={({isActive})=>isActive?"":" font-semibold"}>Pending Assignments</NavLink></li>
     </>

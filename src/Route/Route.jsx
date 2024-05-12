@@ -8,6 +8,8 @@ import Error from "../Pages/Error";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import CreateAssaignment from "../Pages/CreateAssaignment";
+import Assignment from "../Pages/Assignment";
+import Update from "../Pages/Update";
 
   const router=createBrowserRouter([
     {
@@ -30,6 +32,14 @@ import CreateAssaignment from "../Pages/CreateAssaignment";
             {
               path:'/createAssaignment',
               element:<CreateAssaignment></CreateAssaignment>
+            },
+            {
+              path:'/allAssignments',
+              element:<Assignment></Assignment>
+            },
+            {
+              path:'/update',
+              element:<Update></Update>
             }
         ]
     }

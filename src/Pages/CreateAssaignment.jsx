@@ -19,14 +19,28 @@ const CreateAssaignment = () => {
         const Assignment={assign_title,email,due_date,category,mark,description,thumbnail_url}
         console.log(Assignment);
         
-        const {data}= await axios.post(`${import.meta.env.VITE_URL}/assignment`,Assignment)
-        .then(()=>{
-
-        })
-        .catch((err)=>{
-
-        })
-
+        try{
+            const data= await axios.post(`${import.meta.env.VITE_URL}/assignment`,Assignment)
+            
+            .then((res)=>{
+                console.log(res.data);
+                Swal.fire({
+                    position: "top-center",
+                    icon: "success",
+                    title: "Assignment Create Successful",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            })
+            .catch((err)=>{
+                console.log(err);
+            })
+            
+        }
+        catch(err){
+            console.log(err);
+        }
+        
     }
    
     return (
