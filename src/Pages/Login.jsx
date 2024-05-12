@@ -1,10 +1,13 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FaGithub } from "react-icons/fa";
 import logo from '../assets/hub-logo.png'
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from 'sweetalert2'
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
 const Login = () => {
+    const [visible, setVisible] = useState(false)
     const {signIn,signInWithGoogle,sinInWithGithub}=useContext(AuthContext)
     const navigate=useNavigate()
     const handleToSubmit= async e=>{
@@ -70,7 +73,7 @@ const Login = () => {
     }
     return (
         <div className="Lbg py-10">
-        <div class=" w-full max-w-sm p-6 m-auto mx-auto bg-[#ffffff4b] rounded-lg shadow-md dark:bg-gray-800">
+        <div class=" w-full max-w-sm p-6 m-auto mx-auto bg-[#ffffff72] rounded-lg shadow-md dark:bg-gray-800">
         <div class="flex justify-center mx-auto">
             <img class="w-auto h-10 " src={logo} alt=""/>
         </div>
@@ -87,7 +90,10 @@ const Login = () => {
                     <a href="#" class="text-xs text-gray-200 dark:text-gray-400 hover:underline">Forget Password?</a>
                 </div>
     
-                <input type="password" name="password" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" />
+                <input  type={visible ? "text" : "password"} name="password" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" />
+                {
+                            visible ? <FaEye className=" translate-x-72 -translate-y-8 text-2xl" onClick={() => setVisible(!visible)}></FaEye> : <FaEyeSlash className="translate-x-72 -translate-y-8 text-2xl" onClick={() => setVisible(!visible)}></FaEyeSlash>
+             }
             </div>
     
             <div class="mt-6">
@@ -122,7 +128,7 @@ const Login = () => {
             </span>
         </div>
     
-        <p class="mt-8 text-xs font-light text-center text-gray-400"> Don't have an account? <Link to='/register' class="font-medium text-xl text-gray-200 dark:text-gray-200 hover:underline">Create One</Link></p>
+        <p class="mt-8 text-xs font-light text-center text-gray-400"> Don't have an account? <Link to='/register' class="font-medium text-xl text-gray-700 dark:text-gray-200 hover:underline">Create One</Link></p>
     </div>
     </div>
     );

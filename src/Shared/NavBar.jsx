@@ -4,11 +4,12 @@ import { AuthContext } from "../Provider/AuthProvider";
 import logo from '../assets/hub-logo.png'
 import { NavLink } from "react-router-dom";
 const NavBar = () => {
-    const {user}=useContext(AuthContext)
+    const {user,logOut}=useContext(AuthContext)
+    console.log();
     const link=<>
-       <li><NavLink className={({isActive})=>isActive?"":" font-semibold bg-black"}>Assignments</NavLink></li>
-       <li><NavLink className={({isActive})=>isActive?"":" font-semibold bg-black"}>Create Assignments</NavLink></li>
-       <li><NavLink className={({isActive})=>isActive?"":" font-semibold bg-black"}>Pending Assignments</NavLink></li>
+       <li><NavLink className={({isActive})=>isActive?"":" font-semibold b"}>Assignments</NavLink></li>
+       <li><NavLink to='/createAssaignment' className={({isActive})=>isActive?"":" font-semibold "}>Create Assignments</NavLink></li>
+       <li><NavLink className={({isActive})=>isActive?"":" font-semibold"}>Pending Assignments</NavLink></li>
     </>
     return (
         <div className="navbar bg-base-100 h-20 shadow">
@@ -41,7 +42,7 @@ const NavBar = () => {
                     <img
                       referrerPolicy='no-referrer'
                       alt='User Profile Photo'
-                      src=''
+                      src={user?.photoURL}
                     />
                   </div>
                 </div>
@@ -50,16 +51,10 @@ const NavBar = () => {
                   className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52'
                 >
                   <li>
-                    <div>My Posted Jobs</div>
-                  </li>
-                  <li>
-                    <div>My Bids</div>
-                  </li>
-                  <li>
-                    <div>Bid Requests</div>
+                    <div> my attempted assignments</div>
                   </li>
                   <li className='mt-2'>
-                    <button className='bg-gray-200 block text-center'>Logout</button>
+                    <button onClick={()=>logOut()} className='bg-gray-200 block text-center'>Logout</button>
                   </li>
                 </ul>
               </div></>:<> <ul className='gap-5 menu-horizontal px-1'>

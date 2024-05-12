@@ -51,12 +51,19 @@
   }
 
   .Rbg{
-    background-image: url('https://i.ibb.co/XytksW2/dark-theme-background-ggk0hcv04mujwx47.webp');
+    background-image: url('https://i.ibb.co/T41H2YC/teacher-s-desk-which-writing-materials-lie-evening-lamp-89381-1558.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: bottom center;
   }
   .Lbg{
     background-image: url('https://i.ibb.co/j4Sy7DS/cool-dark-wooden-wall-uqxzonyuol5hwv8y.webp');
     background-repeat: no-repeat;
     background-size: cover;
+  }
+  .Cbg{
+    background-image: url('https://i.ibb.co/0Ks3VK5/table-with-textbooks-alarm-clock-stationery-apple.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+   background-position: bottom center;
   }

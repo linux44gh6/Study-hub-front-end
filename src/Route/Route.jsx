@@ -7,6 +7,7 @@ import Home from "../Pages/Home";
 import Error from "../Pages/Error";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
+import CreateAssaignment from "../Pages/CreateAssaignment";
 
   const router=createBrowserRouter([
     {
@@ -25,6 +26,10 @@ import Register from "../Pages/Register";
             {
               path:'/register',
               element:<Register></Register>
+            },
+            {
+              path:'/createAssaignment',
+              element:<CreateAssaignment></CreateAssaignment>
             }
         ]
     }
