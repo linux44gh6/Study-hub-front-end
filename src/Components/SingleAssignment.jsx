@@ -12,7 +12,9 @@ const SingleAssignment = ({assignment,handleToDelete}) => {
       <p className=" text-blue-600 font-semibold">{category}</p>
       <p className=" text-gray-600 font-bold">Marks-<span className=" font-bold">{mark}</span></p>
       <div className="flex gap-3">
+  <NavLink to={`/details/${_id}`}>
   <button className="btn join-item border border-[#FFA500]">View</button>
+  </NavLink>
   <NavLink to={`/update/${_id}`}>
   <button className="btn join-item border border-green-500 ">Update</button>
   </NavLink>

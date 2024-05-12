@@ -10,6 +10,7 @@ import Register from "../Pages/Register";
 import CreateAssaignment from "../Pages/CreateAssaignment";
 import Assignment from "../Pages/Assignment";
 import Update from "../Pages/Update";
+import AssignmentDetails from "../Pages/AssignmentDetails";
 
   const router=createBrowserRouter([
     {
@@ -41,7 +42,11 @@ import Update from "../Pages/Update";
               path:'/update/:id',
               element:<Update></Update>,
               loader:({params})=>fetch(`${import.meta.env.VITE_URL}/Assignment/${params.id}`)
-              
+            },
+            {
+              path:'/details/:id',
+              element:<AssignmentDetails></AssignmentDetails>,
+              loader:({params})=>fetch(`${import.meta.env.VITE_URL}/Assignment/${params.id}`)
             }
         ]
     }
