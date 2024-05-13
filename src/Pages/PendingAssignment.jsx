@@ -1,13 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import SinglePending from "../Components/SinglePending";
 
 const PendingAssignment = () => {
-    const [pending,setPending]=useState([])
+    const [pendings,setPendings]=useState([])
     useEffect(()=>{
         try{
             const getData=async()=>{
                 const data=axios(`${import.meta.env.VITE_URL}/pending/Pending`)
-                setPending((await data).data)
+                setPendings((await data).data)
             }
             getData()
         }
@@ -15,10 +16,15 @@ const PendingAssignment = () => {
             console.log(err);
         }
     },[])
-    console.log(pending);
+    
     return (
-        <div>
-            <h1>this is the Pending</h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 px-5 mt-10">
+            {
+                pendings.map(pending=><SinglePending
+                key={pending._id}
+                pending={pending}
+                ></SinglePending>)
+            }
         </div>
     );
 };
