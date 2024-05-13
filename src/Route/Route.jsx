@@ -14,6 +14,7 @@ import AssignmentDetails from "../Pages/AssignmentDetails";
 import Mysubmitted from "../Pages/Mysubmitted";
 import PendingAssignment from "../Pages/PendingAssignment";
 import GiveMark from "../Components/GiveMark";
+import PrivetRoute from "./PrivetRoute";
 
   const router=createBrowserRouter([
     {
@@ -35,7 +36,7 @@ import GiveMark from "../Components/GiveMark";
             },
             {
               path:'/createAssaignment',
-              element:<CreateAssaignment></CreateAssaignment>
+              element:<PrivetRoute><CreateAssaignment></CreateAssaignment></PrivetRoute>
             },
             {
               path:'/allAssignments',
@@ -43,25 +44,25 @@ import GiveMark from "../Components/GiveMark";
             },
             {
               path:'/update/:id',
-              element:<Update></Update>,
+              element:<PrivetRoute><Update></Update></PrivetRoute>,
               loader:({params})=>fetch(`${import.meta.env.VITE_URL}/Assignment/${params.id}`)
             },
             {
               path:'/details/:id',
-              element:<AssignmentDetails></AssignmentDetails>,
+              element:<PrivetRoute><AssignmentDetails></AssignmentDetails></PrivetRoute>,
               loader:({params})=>fetch(`${import.meta.env.VITE_URL}/Assignment/${params.id}`)
             },
             {
               path:'/mySubmitted',
-              element:<Mysubmitted></Mysubmitted>
+              element:<PrivetRoute><Mysubmitted></Mysubmitted></PrivetRoute>
             },
             {
               path:'/pending',
-              element:<PendingAssignment></PendingAssignment>
+              element:<PrivetRoute><PendingAssignment></PendingAssignment></PrivetRoute>
             },
             {
               path:'/mark/:id',
-              element:<GiveMark></GiveMark>,
+              element:<PrivetRoute><GiveMark></GiveMark></PrivetRoute>,
               loader:({params})=>fetch(`${import.meta.env.VITE_URL}/mark/${params.id}`)
             }
         ]
