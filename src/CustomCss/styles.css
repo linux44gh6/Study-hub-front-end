@@ -67,6 +67,8 @@
     background-size: cover;
    background-position: bottom center;
   }
-  .swal2-container {
-    z-index: 2000;
-  }
+  .my-swal {
+    position: absolute;
+    top: 50px;  /* Adjust as needed */
+    left: 50px; /* Adjust as needed */
+}

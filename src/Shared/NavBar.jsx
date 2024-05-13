@@ -9,7 +9,7 @@ const NavBar = () => {
     const link=<>
        <li><NavLink to='/allAssignments' className={({isActive})=>isActive?"":" font-semibold b"}>Assignments</NavLink></li>
        <li><NavLink to='/createAssaignment' className={({isActive})=>isActive?"":" font-semibold "}>Create Assignments</NavLink></li>
-       <li><NavLink className={({isActive})=>isActive?"":" font-semibold"}>Pending Assignments</NavLink></li>
+       <li><NavLink to='/pending' className={({isActive})=>isActive?"":" font-semibold"}>Pending Assignments</NavLink></li>
     </>
     return (
         <div className="navbar bg-base-100 h-20 shadow">
@@ -22,7 +22,7 @@ const NavBar = () => {
              {link}
             </ul>
           </div>
-          <a className="text-xl"><img className="w-24" src={logo} alt="" /></a>
+          <NavLink to='/' className="text-xl"><img className="w-24" src={logo} alt="" /></NavLink>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className=" flex gap-10 menu-horizontal px-1">

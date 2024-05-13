@@ -7,6 +7,7 @@ import Swal from 'sweetalert2'
 const AssignmentDetails = () => {
     const [startDate, setStartDate] = useState(new Date());
     const {user}=useContext(AuthContext)
+    const examine=user?.displayName
     const data=useLoaderData()
     const handleToCreate=async(e)=>{
         e.preventDefault()
@@ -20,22 +21,24 @@ const AssignmentDetails = () => {
         const submitted_note=form.note.value
         const pdf_link=form.pdf.value
         const status=form.status.value
-        const submitted_assignment={assign_title,email,due_date,category,mark,submitted_note,thumbnail_url,pdf_link,status}
-        console.log(submitted_assignment);
+        const obtain_mark="Pending..."
+        const feedBack='Pending...'
+        
+        const submitted_assignment={assign_title,email,due_date,category,mark,submitted_note,thumbnail_url,pdf_link,status,obtain_mark,feedBack,examine}
+        console.log(submitted_assignment,);
 
         try{
             const data= await axios.post(`${import.meta.env.VITE_URL}/submits`,submitted_assignment)
             
             .then((res)=>{
                 console.log(res.data);
-                Swal.fire({
-                   
-                    position: "top-center",
-                    icon: "success",
-                    title: "Assignment Submit Successful",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
+                 Swal.fire({
+                   position: "top-center",
+                   icon: "success",
+                   title: "Assignment Submit Successful",
+                   showConfirmButton: false,
+                   timer: 1500,
+               });
             })
             .catch((err)=>{
                 console.log(err);
@@ -47,9 +50,14 @@ const AssignmentDetails = () => {
         }
     }
     const{thumbnail_url,assign_title,category,description,due_date,mark}=data
+
+    const [isOpen, setIsOpen] = useState(true);
+
+  const closeModal = () => setIsOpen(false);
+
         return (
         <div>
-           <header class="bg-white dark:bg-gray-900">
+           <header className="bg-white dark:bg-gray-900">
     <div class="container flex flex-col-reverse px-6 py-10 mx-auto space-y-6 lg:h-[32rem] lg:py-16 lg:flex-row lg:items-center">
         <div class="w-full lg:w-1/2">
             <div class="lg:max-w-lg">
@@ -192,9 +200,13 @@ const AssignmentDetails = () => {
             ></textarea>
           </div>
           <div className='flex justify-end mt-6'>
-            <button className='px-8 py-2.5 leading-5 text-white transition-colors duration-300  bg-blue-700 rounded-md  hover:ring-blue-300 hover:ring  hover:bg-blue-600 focus:outline-none focus:bg-gray-600'>
+           
+           <div className="modal-action">
+      <button onClick={()=>document.getElementById('my_modal_1').close()} className='px-8 py-2.5 leading-5 text-white transition-colors duration-300  bg-blue-700 rounded-md  hover:ring-blue-300 hover:ring  hover:bg-blue-600 focus:outline-none focus:bg-gray-600'>
               Submit
-            </button>
+   </button>
+   </div>
+  
           </div>
         </form>
       </section>

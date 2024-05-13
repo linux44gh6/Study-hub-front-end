@@ -52,7 +52,7 @@ const Assignment = () => {
         }
         
     }
-    console.log(assignment);
+    // console.log(assignment);
     return (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             {

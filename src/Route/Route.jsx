@@ -12,6 +12,7 @@ import Assignment from "../Pages/Assignment";
 import Update from "../Pages/Update";
 import AssignmentDetails from "../Pages/AssignmentDetails";
 import Mysubmitted from "../Pages/Mysubmitted";
+import PendingAssignment from "../Pages/PendingAssignment";
 
   const router=createBrowserRouter([
     {
@@ -52,6 +53,10 @@ import Mysubmitted from "../Pages/Mysubmitted";
             {
               path:'/mySubmitted',
               element:<Mysubmitted></Mysubmitted>
+            },
+            {
+              path:'/pending',
+              element:<PendingAssignment></PendingAssignment>
             }
         ]
     }
