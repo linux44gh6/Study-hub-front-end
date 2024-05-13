@@ -32,20 +32,27 @@ const SinglePending = ({pending}) => {
   <div className="modal-box w-11/12 max-w-5xl">
     <h3 className="font-bold text-lg  text-center">FeedBack</h3>
     <section classe="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
-    <h1>Submitted-Doc: <a href={pdf_link}>{pdf_link}</a></h1>
-    <p>Submitted-Note: <span>{submitted_note}</span></p>
+    <h1 className=' font-semibold'>Submitted-Doc: <a className=' font-semibold text-blue-600' href={pdf_link}>{pdf_link}</a></h1>
+    <p className=' font-semibold'>Submitted-Note: <span>{submitted_note}</span></p>
 
     <form>
-        <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2 items-center">
             <div>
-                <label className="text-gray-700 dark:text-gray-200" for="username">Obtain_mark</label>
-                <input id="username" type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"/>
+                <label className="text-gray-700 dark:text-gray-200 font-bold" for="username">Obtain_mark</label>
+                <input id="username" type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" required/>
             </div>
 
-            <div>
-                <label className="text-gray-700 dark:text-gray-200" for="emailAddress">Email Address</label>
-                <input id="emailAddress" type="email" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"/>
-            </div>
+            <div className='flex flex-col gap-2 mt-4'>
+            <label className='text-gray-700 font-bold ' htmlFor='description'>
+              FeedBack
+            </label>
+            <textarea
+              className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+              name='note'
+              id='note'
+              required
+            ></textarea>
+          </div>
 
         </div>
 
@@ -57,7 +64,8 @@ const SinglePending = ({pending}) => {
     <div classNameName="modal-action">
       <form method="dialog">
         {/* if there is a button, it will close the modal */}
-        <button classNameName="btn">Close</button>
+        <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-blue-600 text-2xl">✕</button>
+
       </form>
     </div>
   </div>
