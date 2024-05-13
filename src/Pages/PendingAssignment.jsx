@@ -23,6 +23,8 @@ const PendingAssignment = () => {
                 pendings.map(pending=><SinglePending
                 key={pending._id}
                 pending={pending}
+                id={pending._id}
+                setPendings={setPendings}
                 ></SinglePending>)
             }
         </div>

@@ -13,6 +13,7 @@ import Update from "../Pages/Update";
 import AssignmentDetails from "../Pages/AssignmentDetails";
 import Mysubmitted from "../Pages/Mysubmitted";
 import PendingAssignment from "../Pages/PendingAssignment";
+import GiveMark from "../Components/GiveMark";
 
   const router=createBrowserRouter([
     {
@@ -57,6 +58,11 @@ import PendingAssignment from "../Pages/PendingAssignment";
             {
               path:'/pending',
               element:<PendingAssignment></PendingAssignment>
+            },
+            {
+              path:'/mark/:id',
+              element:<GiveMark></GiveMark>,
+              loader:({params})=>fetch(`${import.meta.env.VITE_URL}/mark/${params.id}`)
             }
         ]
     }
