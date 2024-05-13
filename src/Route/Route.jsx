@@ -11,6 +11,7 @@ import CreateAssaignment from "../Pages/CreateAssaignment";
 import Assignment from "../Pages/Assignment";
 import Update from "../Pages/Update";
 import AssignmentDetails from "../Pages/AssignmentDetails";
+import Mysubmitted from "../Pages/Mysubmitted";
 
   const router=createBrowserRouter([
     {
@@ -47,6 +48,10 @@ import AssignmentDetails from "../Pages/AssignmentDetails";
               path:'/details/:id',
               element:<AssignmentDetails></AssignmentDetails>,
               loader:({params})=>fetch(`${import.meta.env.VITE_URL}/Assignment/${params.id}`)
+            },
+            {
+              path:'/mySubmitted',
+              element:<Mysubmitted></Mysubmitted>
             }
         ]
     }

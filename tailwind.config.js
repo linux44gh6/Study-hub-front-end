@@ -7,7 +7,9 @@ export default {
   theme: {
     extend: {
       fontFamily:{
-        lato: "'Lato, sans-serif'"
+        lato: "'Lato, sans-serif'",
+        roboto:"'Roboto, sans-serif'"
+        
       }
     },
   },

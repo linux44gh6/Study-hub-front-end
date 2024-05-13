@@ -29,6 +29,7 @@ const AssignmentDetails = () => {
             .then((res)=>{
                 console.log(res.data);
                 Swal.fire({
+                   
                     position: "top-center",
                     icon: "success",
                     title: "Assignment Submit Successful",
@@ -64,7 +65,7 @@ const AssignmentDetails = () => {
             <div className=" flex justify-end translate-y-20 -translate-x-14">
             <button className="border border-[] btn  bg-blue-600 text-white text-lg hover:text-black hover:border hover:border-blue-600" onClick={()=>document.getElementById('my_modal_1').showModal()}>Take Assignment</button>
 
-            <dialog id="my_modal_1" className="modal w-full">
+            <dialog id="my_modal_1" className="modal w-full -z-10">
   <div className="modal-box w-11/12 max-w-5xl">
     <div className='flex justify-center items-center min-h-[calc(100vh-306px)] my-12'>
       <section className=' p-2 md:p-6 mx-auto bg-[#ffffff4b] rounded-md shadow-md '>

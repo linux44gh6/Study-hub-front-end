@@ -50,11 +50,10 @@ const NavBar = () => {
                   tabIndex={0}
                   className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52'
                 >
-                  <li>
-                    <div> my attempted assignments</div>
-                  </li>
+                    <NavLink to='/mySubmitted' className=" capitalize font-roboto border hover:border-blue-700 btn text-lg py-2 hover:ring hover:ring-blue-300 hover:ring-opacity-25 bg-blue-600 text-white hover:text-black"> my submitted</NavLink>
+                  
                   <li className='mt-2'>
-                    <button onClick={()=>logOut()} className='bg-gray-200 block text-center'>Logout</button>
+                    <button onClick={()=>logOut()} className='bg-gray-200 block text-center btn'>Logout</button>
                   </li>
                 </ul>
               </div></>:<> <ul className='gap-5 menu-horizontal px-1'>
