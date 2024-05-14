@@ -7,7 +7,7 @@ const SinglePending = ({pending, setPendings}) => {
   const [text] = useTypewriter({
     words: ['...'],
     loop: Infinity,
-    typeSpeed:90
+    typeSpeed:120
   })
   const [id,setId]=useState(null)
   console.log(pending);

@@ -7,10 +7,36 @@ const Assignment = () => {
     const {user}=useContext(AuthContext)
     const [filter,setFilter]=useState('')
     const [assignment,setAssignment]=useState([])
+    const [count,setCount]=useState(0)
+    const [currentPages,setCurrentPages]=useState(0)
+    const [itemPerPage,setItemPerPage]=useState(4)
+
+    useEffect(()=>{
+      fetch('http://localhost:5000/AssignMentCount')
+      .then(res=>res.json())
+      .then(data=>setCount(data.result))
+    },[])
+    console.log(count);
+  const TotalPages=Math.ceil(count/itemPerPage)
+  const pages=[...Array(TotalPages).keys()]
+  console.log(pages);
+  const handleToNext=()=>{
+    console.log(currentPages);
+    if(currentPages<=0){
+      setCurrentPages(currentPages+1)
+     
+    }
+  }
+  const handleToPrev=()=>{
+    if(!currentPages<count){
+      setCurrentPages(currentPages-1)
+    }
+  }
+
     useEffect(()=>{
         try{
             const getData=async()=>{
-                const data=axios(`${import.meta.env.VITE_URL}/allAssignment?filter=${filter}`)
+                const data=axios(`${import.meta.env.VITE_URL}/allAssignment?filter=${filter}&page=${currentPages}&size=${itemPerPage}`)
                 setAssignment((await data).data)
             }
             getData()
@@ -18,7 +44,7 @@ const Assignment = () => {
         catch(err){
             console.log(err);
         }
-    },[filter])
+    },[filter,currentPages])
     const handleToDelete=async(id,email)=>{
         if(user?.email===email){
             Swal.fire({
@@ -53,10 +79,11 @@ const Assignment = () => {
         }
         
     }
+   
     // console.log(assignment);
     return (
         <div className="pt-20">
-             <div className='flex flex-col gap-2 w-40 mx-auto '>
+             <div className='flex flex-col gap-2 w-40 mx-auto mb-5 mt-1'>
               <label className='text-gray-700 font-bold dark:text-white' htmlFor='category'>
                 FilterBy
               </label>
@@ -80,8 +107,18 @@ const Assignment = () => {
                     handleToDelete={handleToDelete}
                 ></SingleAssignment>)
             }
-            </div>
             
+            </div>
+           <div className="flex justify-center gap-5 mt-6">
+            <button onClick={handleToPrev} className="btn bg-blue-800 text-white text-lg">prev</button>
+           {
+              pages.map(page=><button
+                onClick={()=>setCurrentPages(page+1)}
+                className={currentPages===page? 'selected btn':"btn"}>{page}</button>)
+            }
+            <button onClick={handleToNext} className="btn bg-blue-700 text-white text-lg">Next</button>
+           </div>
+           
         </div>
     );
 };

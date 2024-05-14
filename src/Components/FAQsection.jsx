@@ -1,11 +1,13 @@
 
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init();
 const FAQsection = () => {
     return (
         <div className="mt-20 px-10">
             <h1 className="text-center text-5xl font-lato">Frequently Asked Questions</h1>
             <div className="flex flex-row-reverse lg:flex-row justify-between gap-2 items-center mt-10">
-                <div className="flex-1">
+                <div className="flex-1" data-aos="slide-right"  data-aos-offset="" data-aos-duration="1500" data-aos-easing="ease-in-out">
                 <div className="collapse collapse-plus bg-base-200">
                     <input type="radio" name="my-accordion-3" defaultChecked />
                     <div className="collapse-title font-medium text-2xl  font-lato">
@@ -53,7 +55,7 @@ const FAQsection = () => {
                     </div>
                 </div>
             </div>
-            <div>
+            <div data-aos="slide-left"  data-aos-offset="" data-aos-duration="1500" data-aos-easing="ease-in-out">
                 <img className="w-[600px] rounded-md" src="https://i.ibb.co/PtQYMsF/character-standing-near-letters-using-smart-phone-laptop-question-answer-illustration-126608-44.jpg" alt="" />
             </div>
             </div>

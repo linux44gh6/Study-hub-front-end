@@ -72,3 +72,7 @@
     top: 50px;  /* Adjust as needed */
     left: 50px; /* Adjust as needed */
 }
+
+.selected{
+  background: orange;
+}
