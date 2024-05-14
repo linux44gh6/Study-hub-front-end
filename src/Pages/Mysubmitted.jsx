@@ -10,7 +10,9 @@ const Mysubmitted = () => {
     useEffect(()=>{
         try{
             const getData=async()=>{
-                const data=await  axios(`${import.meta.env.VITE_URL}/submitted/${user?.email}`)
+                const data=await  axios(`${import.meta.env.VITE_URL}/submitted/${user?.email}`,
+                  {withCredentials:true}
+                )
                 setSubmitted(data.data)
             }
             getData()
@@ -21,7 +23,7 @@ const Mysubmitted = () => {
         console.log(submitted);
     },[])
     return (
-        <section className='container px-4 mx-auto pt-12'>
+        <section className='container px-4 mx-auto pt-24'>
         <div className='flex items-center gap-x-3'>
           <h2 className='text-lg font-medium text-gray-800 '>My Submission</h2>
   

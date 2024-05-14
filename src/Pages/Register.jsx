@@ -3,8 +3,11 @@ import { AuthContext } from "../Provider/AuthProvider";
 import Swal from 'sweetalert2'
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 const Register = () => {
+    const location=useLocation()
+    const from=location.state||'/'
+    const navigate=useNavigate()
     const [visible, setVisible] = useState(false)
     const { createUser, updateUserProfile,setUser,user } = useContext(AuthContext)
     const handleToSubmit =async (e) => {
@@ -50,6 +53,7 @@ const Register = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
+                navigate(from)
             })
             .catch((err) => {
                 Swal.fire({

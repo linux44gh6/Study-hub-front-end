@@ -54,10 +54,16 @@ const AssignmentDetails = () => {
     const [isOpen, setIsOpen] = useState(true);
 
   const closeModal = () => setIsOpen(false);
+const [pdf,setPdf]=useState(null)
+const handleToRead=e=>{
+  const form=e.target
+  const pdf2=form.pdf.value
+  setPdf(pdf2)
+}
 
         return (
         <div>
-           <header className="bg-white dark:bg-gray-900">
+           <header className="bg-white dark:bg-gray-900 pt-10">
     <div class="container flex flex-col-reverse px-6 py-10 mx-auto space-y-6 lg:h-[32rem] lg:py-16 lg:flex-row lg:items-center">
         <div class="w-full lg:w-1/2">
             <div class="lg:max-w-lg">
@@ -166,11 +172,13 @@ const AssignmentDetails = () => {
                 Pdf/Doc Link
               </label>
               <input
+              onChange={handleToRead}
                 id='Mark'
                 name='pdf'
                 type='url'
                 className='w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
           required    />
+         
             </div>
             <div>
               <label className='text-gray-700 font-bold ' htmlFor='mark'>

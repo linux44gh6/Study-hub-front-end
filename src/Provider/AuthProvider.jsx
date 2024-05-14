@@ -11,6 +11,7 @@ import {
   updateProfile,
 } from 'firebase/auth'
 import app from '../../firebase.config'
+import axios from 'axios'
 
 
 export const AuthContext = createContext(null)
@@ -40,6 +41,8 @@ const sinInWithGithub=()=>{
 return signInWithPopup(auth,gitHubProvider)
 }
   const logOut = async () => {
+    const {data}=await axios(`${import.meta.env.VITE_URL}/logOut`,{withCredentials:true})
+    console.log(data);
     setLoading(true)
     return signOut(auth)
   }

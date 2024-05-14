@@ -5,11 +5,12 @@ import { AuthContext } from "../Provider/AuthProvider";
 import Swal from 'sweetalert2'
 const Assignment = () => {
     const {user}=useContext(AuthContext)
+    const [filter,setFilter]=useState('')
     const [assignment,setAssignment]=useState([])
     useEffect(()=>{
         try{
             const getData=async()=>{
-                const data=axios(`${import.meta.env.VITE_URL}/allAssignment`)
+                const data=axios(`${import.meta.env.VITE_URL}/allAssignment?filter=${filter}`)
                 setAssignment((await data).data)
             }
             getData()
@@ -17,7 +18,7 @@ const Assignment = () => {
         catch(err){
             console.log(err);
         }
-    },[])
+    },[filter])
     const handleToDelete=async(id,email)=>{
         if(user?.email===email){
             Swal.fire({
@@ -54,7 +55,24 @@ const Assignment = () => {
     }
     // console.log(assignment);
     return (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div className="pt-20">
+             <div className='flex flex-col gap-2 w-40 mx-auto '>
+              <label className='text-gray-700 font-bold' htmlFor='category'>
+                FilterBy
+              </label>
+              <select
+              onChange={(e)=>setFilter(e.target.value)}
+              value={filter}
+                name='category'
+                id='category'
+                className='border p-2 rounded-md'
+              >
+                <option value='Easy'>Easy</option>
+                <option value='Medium'>Medium</option>
+                <option value='Hard'>Hard</option>
+              </select>
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             {
                 assignment.map(assn=><SingleAssignment
                 key={assn._id}
@@ -62,6 +80,8 @@ const Assignment = () => {
                     handleToDelete={handleToDelete}
                 ></SingleAssignment>)
             }
+            </div>
+            
         </div>
     );
 };

@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGithub } from "react-icons/fa";
 import logo from '../assets/hub-logo.png'
 import { useContext, useState } from "react";
@@ -6,7 +6,10 @@ import { AuthContext } from "../Provider/AuthProvider";
 import Swal from 'sweetalert2'
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
+import axios from "axios";
 const Login = () => {
+    const location=useLocation()
+    const from=location.state||'/'
     const [visible, setVisible] = useState(false)
     const {signIn,signInWithGoogle,sinInWithGithub}=useContext(AuthContext)
     const navigate=useNavigate()
@@ -16,8 +19,12 @@ const Login = () => {
         const email=form.email.value
         const password=form.password.value
       try{
-        signIn(email,password)
-        .then(()=>{
+       signIn(email,password)
+        .then(async(result)=>{
+            const {data}=await axios.post(`${import.meta.env.VITE_URL}/jwt`,{
+                email:result?.user?.email,
+            },{withCredentials:true})
+            console.log(data);
             Swal.fire({
                 position: "top-center",
                 icon: "success",
@@ -25,16 +32,30 @@ const Login = () => {
                 showConfirmButton: false,
                 timer: 1500
             });
-            navigate('/')
+            navigate(from,{replace:true})
         })
+        .catch((err)=>{
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: `${err.message}`,
+            });
+        })
+       
       }
       catch(err){
 
       }
     }
     const handleToGoogleLogin=async e=>{
-      const result=await signInWithGoogle()
-      .then(()=>{
+        try{
+       signInWithGoogle()
+
+      .then( async(result)=>{
+        const {data}=await axios.post(`${import.meta.env.VITE_URL}/jwt`,{
+            email:result?.user?.email,
+        },{withCredentials:true})
+        console.log(data);
         Swal.fire({
             position: "top-center",
             icon: "success",
@@ -42,6 +63,7 @@ const Login = () => {
             showConfirmButton: false,
             timer: 1500
         });
+        navigate(from)
       })
       .catch((err)=>{
         Swal.fire({
@@ -50,11 +72,22 @@ const Login = () => {
             text: `${err.message}`,
         });
       })
-        
+       
+      
+    }
+  
+    catch(err){
+        console.log(err);
+    }
     }
     const handleToGitHubLogin = async e=>{
-      const result=await  sinInWithGithub()
-      .then(()=>{
+        try{
+      sinInWithGithub()
+      .then(async(result)=>{
+        const {data}=await axios.post(`${import.meta.env.VITE_URL}/jwt`,{
+            email:result?.user?.email,
+        },{withCredentials:true})
+        console.log(data);
         Swal.fire({
             position: "top-center",
             icon: "success",
@@ -62,6 +95,7 @@ const Login = () => {
             showConfirmButton: false,
             timer: 1500
         });
+        navigate(from)
       })
       .catch((err)=>{
         Swal.fire({
@@ -70,10 +104,19 @@ const Login = () => {
             text: `${err.message}`,
         });
       })
+      const {data}=await axios.post(`${import.meta.env.VITE_URL}/jwt`,{
+        email:result?.user?.email,
+    },{withCredentials:true})
+    console.log(data);
     }
+    catch(err){
+        console.log(err);
+    }
+}
+
     return (
-        <div className="Lbg py-10">
-        <div class=" w-full max-w-sm p-6 m-auto mx-auto bg-[#ffffff72] rounded-lg shadow-md dark:bg-gray-800">
+        <div className="Lbg py-16 ">
+        <div class=" translate-y-10 w-full max-w-sm p-6 m-auto mx-auto bg-[#ffffff72] rounded-lg shadow-md dark:bg-gray-800">
         <div class="flex justify-center mx-auto">
             <img class="w-auto h-10 " src={logo} alt=""/>
         </div>

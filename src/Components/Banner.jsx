@@ -12,7 +12,7 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 export default function Banner() {
   return (
-    <div className='h-[86vh]'>
+    <div className='h-[100vh]'>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
