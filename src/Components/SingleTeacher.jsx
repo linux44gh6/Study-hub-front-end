@@ -5,7 +5,7 @@ const SingleTeacher = ({teacher}) => {
     
     return (
         <div className="max-w-2xl overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
-        <img className="object-cover w-full h-64" src={thumbnail} alt="Article"/>
+        <img className="object-cover w-full h-64 hover:scale-105 transition" src={thumbnail} alt="Article"/>
     
         <div className="p-6">
             <div>

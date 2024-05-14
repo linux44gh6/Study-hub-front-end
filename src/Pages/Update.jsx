@@ -44,14 +44,14 @@ const Update = () => {
         }
   }
     return (
-        <div>
-            <header class="bg-white dark:bg-gray-900">
+        <div className=" translate-y-24  dark:text-white">
+            <header class="bg-white py-10 dark:bg-gray-900">
 
     <div class="container flex flex-col px-6 py-10 mx-auto space-y-6 lg:h-[32rem] lg:py-16 lg:flex-row-reverse lg:items-center gap-5">
         <div class="w-full lg:w-1/2">
         <div className='flex justify-center items-center min-h-[calc(100vh-306px)] my-12'>
       <section className=' p-2 md:p-6 mx-auto bg-[#ffffff4b] rounded-md shadow-md '>
-        <h2 className='text-3xl text-center mb-10 font-semibold text-gray-700  font-lato   '>
+        <h2 className='text-3xl text-center mb-10 font-semibold text-gray-700 dark:text-white  font-lato   '>
           UpDate the  Assignment
         </h2>
 

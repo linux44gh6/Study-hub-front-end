@@ -2,7 +2,13 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Typewriter from 'typewriter-effect/dist/core';
+import { useTypewriter } from 'react-simple-typewriter'
 const SinglePending = ({pending, setPendings}) => {
+  const [text] = useTypewriter({
+    words: ['...'],
+    loop: Infinity,
+    typeSpeed:90
+  })
   const [id,setId]=useState(null)
   console.log(pending);
     const {thumbnail_url,
@@ -12,11 +18,6 @@ const SinglePending = ({pending, setPendings}) => {
         mark,
         examine,obtain_mark,feedBack,_id}=pending
 
-        const handleToSubmitFeedBack=async(e)=>{
-          e.preventDefault()
-         
-          console.log(TFeedBack,id);
-        }
     return (
         <div>
             <div className="flex flex-col lg:flex-row lg:w-[600px] overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
@@ -25,7 +26,7 @@ const SinglePending = ({pending, setPendings}) => {
     </div>
 
     <div className="lg:w-[700px] p-4 md:p-4">
-        <h1 className=" lg:translate-x-52 -translate-y-5 font-bold text-red-500">{status}...</h1>
+        <h1 className=" lg:translate-x-52 -translate-y-5 font-bold text-red-500">{status}{text}</h1>
         <h1 className="text-xl font-bold text-gray-800 dark:text-white">{assign_title}</h1>
 
         <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 flex gap-1 font-semibold">Examine: <span classNameName=" hover:underline">{examine}</span></p>

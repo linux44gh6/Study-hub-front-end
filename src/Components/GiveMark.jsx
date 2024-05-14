@@ -1,6 +1,16 @@
 import axios from "axios";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
+import 'animate.css';
+import { useState } from "react";
+const PdfViewer = ({ pdfUrl }) => {
+    return (
+      <div className="pdf-viewer">
+        <iframe src={pdfUrl} title="PDF Viewer" width="100%" height="500px" />
+      </div>
+    );
+  };
+
 const GiveMark = () => {
     const navigate=useNavigate()
     const pending=useLoaderData()
@@ -41,12 +51,24 @@ const GiveMark = () => {
         }
      console.log(TFeedBack);
     }
+
+   const [showPdf, setShowPdf] = useState(false);
+
+  const handleButtonClick = () => {
+    setShowPdf(true);
+  };
     return (
         <div className=" flex justify-center pt-20">
-             <div className="modal-box w-11/12 max-w-5xl border border-blue-700">
+             <div className="modal-box w-11/12 max-w-5xl border border-blue-700 animate__animated animate__backInDown">
     <h3 className="font-bold text-2xl mb-4  text-center ">FeedBack</h3>
     <section classe="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
     <h1 className=' font-semibold text-xl'>Submitted-Doc- <a className=' text-xl font-semibold text-blue-600' href={pdf_link}>{pdf_link}</a></h1>
+    <div>
+        <button onClick={handleButtonClick} className="btn border border-blue-700">Preview Doc</button>
+        {
+            showPdf&&<PdfViewer pdfUrl={`${pdf_link}`} />
+        }
+    </div>
     <p className=' font-semibold text-xl'>Submitted-Note: <span className=" text-xl text-gray-600">{submitted_note}</span></p>
 
     <form onSubmit={handleToSubmitFeedBack}>

@@ -3,6 +3,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import DatePicker from "react-datepicker";
 import axios from "axios";
 import Swal from 'sweetalert2'
+import 'animate.css';
 const CreateAssaignment = () => {
     const [startDate, setStartDate] = useState(new Date());
     const {user}=useContext(AuthContext)
@@ -45,7 +46,7 @@ const CreateAssaignment = () => {
    
     return (
      <div className=" Cbg py-10">
-        <div className='flex justify-center items-center min-h-[calc(100vh-306px)] my-12'>
+        <div className='flex justify-center items-center min-h-[calc(100vh-306px)] my-12 animate__animated animate__backInDown'>
       <section className=' p-2 md:p-6 mx-auto bg-[#ffffff4b] rounded-md shadow-md '>
         <h2 className='text-3xl text-center mb-5 font-semibold text-gray-200  font-lato  '>
           Create a  Assignment

@@ -57,7 +57,7 @@ const Assignment = () => {
     return (
         <div className="pt-20">
              <div className='flex flex-col gap-2 w-40 mx-auto '>
-              <label className='text-gray-700 font-bold' htmlFor='category'>
+              <label className='text-gray-700 font-bold dark:text-white' htmlFor='category'>
                 FilterBy
               </label>
               <select
