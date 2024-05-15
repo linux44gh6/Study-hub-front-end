@@ -58,7 +58,7 @@ const GiveMark = () => {
     setShowPdf(true);
   };
     return (
-        <div className=" flex justify-center pt-20">
+        <div className=" flex justify-center pt-24">
              <div className="modal-box w-11/12 max-w-5xl border border-blue-700 animate__animated animate__backInDown">
     <h3 className="font-bold text-2xl mb-4  text-center ">FeedBack</h3>
     <section classe="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">

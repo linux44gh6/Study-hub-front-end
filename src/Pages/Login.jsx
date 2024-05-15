@@ -115,7 +115,7 @@ const Login = () => {
 }
 
     return (
-        <div className="Lbg py-16 ">
+        <div className="Lbg py-16 pt-24 md:pt-20 lg:pt-20">
         <div class=" translate-y-10 w-full max-w-sm p-6 m-auto mx-auto bg-[#ffffff72] rounded-lg shadow-md dark:bg-gray-800">
         <div class="flex justify-center mx-auto">
             <img class="w-auto h-10 " src={logo} alt=""/>
@@ -171,7 +171,7 @@ const Login = () => {
             </span>
         </div>
     
-        <p class="mt-8 text-xs font-light text-center text-gray-400"> Don't have an account? <Link to='/register' class="font-medium text-xl text-gray-700 dark:text-gray-200 hover:underline">Create One</Link></p>
+        <p class="mt-8 text-xs font-light text-center text-gray-700"> Don't have an account? <Link to='/register' class="font-medium text-xl text-blue-700 dark:text-gray-200 hover:underline">Create One</Link></p>
     </div>
     </div>
     );

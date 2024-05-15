@@ -8,11 +8,11 @@ const Assignment = () => {
     const [filter,setFilter]=useState('')
     const [assignment,setAssignment]=useState([])
     const [count,setCount]=useState(0)
-    const [currentPages,setCurrentPages]=useState(0)
-    const [itemPerPage,setItemPerPage]=useState(4)
+    const [currentPages,setCurrentPages]=useState(1)
+    const [itemPerPage,setItemPerPage]=useState(2)
 
     useEffect(()=>{
-      fetch('http://localhost:5000/AssignMentCount')
+      fetch('https://b9a11-server-side-linux44gh6.vercel.app/AssignMentCount')
       .then(res=>res.json())
       .then(data=>setCount(data.result))
     },[])
@@ -21,8 +21,7 @@ const Assignment = () => {
   const pages=[...Array(TotalPages).keys()]
   console.log(pages);
   const handleToNext=()=>{
-    console.log(currentPages);
-    if(currentPages<=0){
+    if(currentPages>0){
       setCurrentPages(currentPages+1)
      
     }
@@ -82,7 +81,7 @@ const Assignment = () => {
    
     // console.log(assignment);
     return (
-        <div className="pt-20">
+        <div className=" pt-32 lg:pt-20">
              <div className='flex flex-col gap-2 w-40 mx-auto mb-5 mt-1'>
               <label className='text-gray-700 font-bold dark:text-white' htmlFor='category'>
                 FilterBy
@@ -113,8 +112,8 @@ const Assignment = () => {
             <button onClick={handleToPrev} className="btn bg-blue-800 text-white text-lg">prev</button>
            {
               pages.map(page=><button
-                onClick={()=>setCurrentPages(page+1)}
-                className={currentPages===page? 'selected btn':"btn"}>{page}</button>)
+                onClick={()=>setCurrentPages(page)}
+                className={currentPages===page? 'selected btn':"btn"}>{page+1}</button>)
             }
             <button onClick={handleToNext} className="btn bg-blue-700 text-white text-lg">Next</button>
            </div>

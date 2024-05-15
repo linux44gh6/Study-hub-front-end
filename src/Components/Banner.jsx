@@ -13,7 +13,7 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 export default function Banner() {
   return (
-    <div className='h-[100vh]'>
+    <div className='h-[100vh] w-full'>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -30,16 +30,16 @@ export default function Banner() {
         className="mySwiper"
       >
         <SwiperSlide className='slide1'>
-            <div className='flex flex-col justify-start lg:-translate-x-64 lg:w-1/2 space-y-2'>
+            <div className='flex flex-col justify-start -translate-x-2 lg:-translate-x-64 lg:w-1/2 space-y-2'>
             <Slide delay={100} duration={1000}>
-            <h1 className=' text-left lg:text-7xl text-white font-lato'>Discover the Power of Community Learning</h1>
+            <h1 className=' text-left text-xl lg:text-7xl text-white font-lato'>Discover the Power of Community Learning</h1>
             </Slide>
             <Slide delay={100} duration={1500}>
-            <p className=' text-left text-white'>Showcase the benefits of community-based learning in fostering a supportive and enriching academic environment</p>
+            <p className='text-left text-white w-full '>Showcase the benefits of community-based learning in fostering a supportive and enriching academic environment</p>
             </Slide>
            <Slide delay={100} duration={2000}>
-           <div className='flex translate-x-2 lg:translate-x-0 gap-2'>
-            <button className=' uppercase px-1 lg:px-3 py-3 rounded bg-[#2164f3] text-white'>get started now</button>
+           <div className='flex flex-col md:flex-row   lg:flex-row translate-x-2 lg:translate-x-0 gap-2'>
+            <button className='  uppercase px-1  lg:px-3 py-3 rounded bg-[#2164f3] text-white'>get started now</button>
             <button className=' hover:bg-base-200 hover:text-black transition uppercase px-2 lg:px-10 text-white py-3 rounded border border-white '>Take a tour</button>
             </div>
            </Slide>
@@ -54,7 +54,7 @@ export default function Banner() {
            <p className=' text-left text-white'>Showcase the benefits of community-based learning in fostering a supportive and enriching academic environment</p>
            </Slide>
            <Slide delay={100} duration={2000}>
-           <div className='flex translate-x-2 lg:translate-x-0 gap-2'>
+           <div className='flex flex-col md:flex-row lg:flex-row translate-x-2 lg:translate-x-0 gap-2'>
             <button className=' uppercase px-2 lg:px-3 py-3 rounded bg-[#2164f3] text-white'>get started now</button>
             <button className=' hover:bg-base-200 hover:text-black transition uppercase px-1 lg:px-10 text-white py-3 rounded border border-white '>Take a tour</button>
             </div>
@@ -70,7 +70,7 @@ export default function Banner() {
           <p className=' text-left text-white'>Showcase the benefits of community-based learning in fostering a supportive and enriching academic environment</p>
           </Slide>
             <Slide delay={100} duration={2000}>
-            <div className='flex translate-x-4 gap-2'>
+            <div className='flex flex-col md:flex-row lg:flex-row translate-x-0 lg:translate-x-4 gap-2'>
             <button className=' uppercase px-2 lg:px-3 py-3 rounded bg-[#2164f3] text-white'>get started now</button>
             <button className=' hover:bg-base-200 hover:text-black transition uppercase px-1 lg:px-10 text-white py-3 rounded border border-white '>Take a tour</button>
             </div>
@@ -86,8 +86,8 @@ export default function Banner() {
             <p className=' text-left text-white'>Showcase the benefits of community-based learning in fostering a supportive and enriching academic environment</p>
             </Slide>
            <Slide delay={100} duration={2000}>
-           <div className='flex translate-x-2 lg:translate-x-0 gap-2'>
-            <button className=' uppercase px-1 lg:px-3 py-3 rounded bg-[#2164f3] text-white'>get started now</button>
+           <div className='flex flex-col md:flex-row lg:flex-row translate-x-2 lg:translate-x-0 gap-2'>
+            <button className=' uppercase  px-0 lg:px-3 py-1 lg:py-3 rounded bg-[#2164f3] text-white'>get started now</button>
             <button className=' hover:bg-base-200 hover:text-black transition uppercase px-1 lg:px-10 text-white py-3 rounded border border-white '>Take a tour</button>
             </div>
            </Slide>

@@ -9,7 +9,7 @@ const SingleTeacher = ({teacher}) => {
         <div data-aos="zoom-in"  data-aos-offset="" data-aos-duration="1000" data-aos-easing="ease-in-out" className="max-w-2xl overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
         <img className="object-cover w-full h-64 hover:scale-105 transition" src={thumbnail} alt="Article"/>
     
-        <div className="p-6">
+        <div className="lg:p-6">
             <div>
                 <span className="text-xs font-medium text-blue-600 uppercase dark:text-blue-400">Feature</span>
                 <a href="#" className="block mt-2 text-xl font-semibold text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600 hover:underline" tabindex="0" role="link">{title}</a>

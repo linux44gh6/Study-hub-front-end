@@ -77,7 +77,7 @@ const handleToRead=e=>{
                 </div>
             </div>
             <div className=" flex justify-end translate-y-20 -translate-x-14">
-            <button className="border border-[] btn  bg-blue-600 text-white text-lg hover:text-black hover:border hover:border-blue-600 me-4">Preview Assignment</button> 
+          
 
             <button className="border border-[] btn  bg-blue-600 text-white text-lg hover:text-black hover:border hover:border-blue-600" onClick={()=>document.getElementById('my_modal_1').showModal()}>Take Assignment</button>
 

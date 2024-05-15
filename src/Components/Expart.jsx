@@ -22,11 +22,11 @@ const Expart = () => {
     console.log(teachers);
     return (
         <div className='mt-20'>
-            <div className='lg:w-1/2 mx-auto text-center'>
-                <h1 className=' font-lato text-2xl lg:text-5xl' data-aos="zoom-in"  data-aos-offset="150" data-aos-duration="1000" data-aos-easing="ease-in-out" >Explore our Features</h1>
-                <p data-aos="slide-up"  data-aos-offset="150" data-aos-duration="1000" data-aos-easing="ease-in-out" className=' font-semibold text-gray-500'>Discover the breadth and depth of our platform's capabilities as you delve into a myriad of innovative features meticulously designed to enhance your online group-study experience.</p>
+            <div className=' w-full md:w-1/2 lg:w-1/2 mx-auto text-center'>
+                <h1 className=' font-lato text-lg lg:text-5xl' data-aos="zoom-in"  data-aos-offset="150" data-aos-duration="1000" data-aos-easing="ease-in-out" >Explore our Features</h1>
+                <p data-aos="slide-up"  data-aos-offset="150" data-aos-duration="1000" data-aos-easing="ease-in-out" className=' lg:font-semibold text-gray-500 '>Discover the breadth and depth of our platform's capabilities as you delve into a myriad of innovative features meticulously designed to enhance your online group-study experience.</p>
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-10 gap-3 mt-10'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-0 lg:px-10 gap-3 mt-10'>
                 {
                     teachers.map(teacher=><SingleTeacher
                     teacher={teacher}

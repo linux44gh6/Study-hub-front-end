@@ -75,7 +75,7 @@ const Register = () => {
     }
 }
     return (
-        <section className="dark:bg-gray-900 Rbg">
+        <section className="dark:bg-gray-900 Rbg pt-28 lg:pt-20 pb-5">
             <div className="container flex items-center justify-center min-h-screen px-6 mx-auto">
                 <form className="w-full max-w-md" onSubmit={handleToSubmit}>
                     <div className="flex justify-center mx-auto">

@@ -20,7 +20,7 @@ const SinglePending = ({pending, setPendings}) => {
 
     return (
         <div>
-            <div className="flex flex-col lg:flex-row lg:w-[600px] overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
+            <div className="flex flex-col lg:flex-row lg:w-[600px] overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 p-2">
     <div className=" ">
         <img className=" rounded" src={thumbnail_url} alt="" />
     </div>
@@ -38,7 +38,7 @@ const SinglePending = ({pending, setPendings}) => {
         <div className="flex justify-between mt-3 item-center gap-">
             <h1 className="text-lg font-semibold text-gray-700 dark:text-gray-200 "></h1>
            <NavLink to={`/mark/${_id}`}>
-           <button className="px-2 py-2 text-xs font-bold hover:text-white uppercase transition-colors duration-300 transform rounded dark:bg-gray-700 hover:bg-blue-900   border border-blue-600 btn text-black" onClick={() => {document.getElementById('my_modal_4').showModal(); setId(`${_id}`);}}>give mark</button>
+           <button className="px-2 py-2 text-xs font-bold hover:text-white uppercase transition-colors duration-300 transform rounded dark:bg-blue-700 hover:bg-blue-900   border border-blue-600 btn dark:text-white  text-black" onClick={() => {document.getElementById('my_modal_4').showModal(); setId(`${_id}`);}}>give mark</button>
            </NavLink>
             
 
