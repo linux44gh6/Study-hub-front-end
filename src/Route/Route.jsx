@@ -15,6 +15,9 @@ import Mysubmitted from "../Pages/Mysubmitted";
 import PendingAssignment from "../Pages/PendingAssignment";
 import GiveMark from "../Components/GiveMark";
 import PrivetRoute from "./PrivetRoute";
+import Dashboard from "../Pages/DashBoard/Dashboard";
+import Student from "../Pages/DashBoard/Student/Student";
+import TeacherHome from "../Pages/DashBoard/TeacherHome/TeacherHome";
 
   const router=createBrowserRouter([
     {
@@ -56,16 +59,31 @@ import PrivetRoute from "./PrivetRoute";
               path:'/mySubmitted',
               element:<PrivetRoute><Mysubmitted></Mysubmitted></PrivetRoute>
             },
-            {
-              path:'/pending',
-              element:<PrivetRoute><PendingAssignment></PendingAssignment></PrivetRoute>
-            },
+            
             {
               path:'/mark/:id',
               element:<PrivetRoute><GiveMark></GiveMark></PrivetRoute>,
               loader:({params})=>fetch(`${import.meta.env.VITE_URL}/mark/${params.id}`)
             }
         ]
+    },
+    {
+      path:'/dashboard',
+      element:<PrivetRoute><Dashboard></Dashboard></PrivetRoute>,
+      children:[
+        {
+          path:'/dashboard/pending',
+          element:<PendingAssignment></PendingAssignment>
+        },
+        {
+          path:'/dashboard/student',
+          element:<Student></Student>
+        },
+        {
+          path:'/dashboard/teacherHome',
+          element:<TeacherHome></TeacherHome>
+        }
+      ]
     }
   ])
   export default router

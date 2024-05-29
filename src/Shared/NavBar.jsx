@@ -20,9 +20,13 @@ const NavBar = () => {
   const { user, logOut } = useContext(AuthContext)
   console.log();
   const link = <>
-
-
-    <><li><NavLink to='/allAssignments' className={({ isActive }) => isActive ? " border px-2 py-1 rounded text-orange-900 font-semibold text-lg" : "  font-semibold text-lg hover:scale-105"}>Assignments</NavLink></li><li><NavLink to='/createAssaignment' className={({ isActive }) => isActive ? "text-orange-900 font-semibold text-lg  border px-2 py-1 rounded" : "  font-semibold text-lg "}>Create Assignments</NavLink></li><li><NavLink to='/pending' className={({ isActive }) => isActive ? " text-orange-900 font-semibold text-lg  border px-2 py-1 rounded" : " font-semibold text-lg hover:scale-105"}>Pending Assignments</NavLink></li></>
+    <>
+    <li><NavLink to='/allAssignments' className={({ isActive }) => isActive ? " border px-2 py-1 rounded text-orange-900 font-semibold text-lg" : "  font-semibold text-lg hover:scale-105"}>Assignments</NavLink></li>
+    <li><NavLink to='/createAssaignment' className={({ isActive }) => isActive ? "text-orange-900 font-semibold text-lg  border px-2 py-1 rounded" : "  font-semibold text-lg "}>Create Assignments</NavLink></li>
+  {
+    user&&  <li><NavLink to='/dashBoard' className={({ isActive }) => isActive ? " text-orange-900 font-semibold text-lg  border px-2 py-1 rounded" : " font-semibold text-lg hover:scale-105"}>DashBoard</NavLink></li>
+  }
+    </>
   </>
 
 const lgs = localStorage.getItem('theme') || 'light'
