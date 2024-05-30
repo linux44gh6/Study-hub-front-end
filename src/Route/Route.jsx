@@ -18,6 +18,12 @@ import PrivetRoute from "./PrivetRoute";
 import Dashboard from "../Pages/DashBoard/Dashboard";
 import Student from "../Pages/DashBoard/Student/Student";
 import TeacherHome from "../Pages/DashBoard/TeacherHome/TeacherHome";
+import DashBoardHome from "../Pages/DashBoard/DashBoardHome/DashBoardHome";
+import AdminRoute from "./AdminRoute";
+import StudentHome from "../Pages/DashBoard/StudentHome/StudentHome";
+import AcademicResult from "../Pages/DashBoard/AcademicResult/AcademicResult";
+import PersonalNote from "../Pages/DashBoard/PersonelNote/PersonalNote";
+import Achivement from "../Pages/DashBoard/Achivement/Achivement";
 
   const router=createBrowserRouter([
     {
@@ -55,16 +61,8 @@ import TeacherHome from "../Pages/DashBoard/TeacherHome/TeacherHome";
               element:<PrivetRoute><AssignmentDetails></AssignmentDetails></PrivetRoute>,
               loader:({params})=>fetch(`${import.meta.env.VITE_URL}/Assignment/${params.id}`)
             },
-            {
-              path:'/mySubmitted',
-              element:<PrivetRoute><Mysubmitted></Mysubmitted></PrivetRoute>
-            },
+           
             
-            {
-              path:'/mark/:id',
-              element:<PrivetRoute><GiveMark></GiveMark></PrivetRoute>,
-              loader:({params})=>fetch(`${import.meta.env.VITE_URL}/mark/${params.id}`)
-            }
         ]
     },
     {
@@ -72,17 +70,48 @@ import TeacherHome from "../Pages/DashBoard/TeacherHome/TeacherHome";
       element:<PrivetRoute><Dashboard></Dashboard></PrivetRoute>,
       children:[
         {
+          path:'/dashboard',
+          element:<DashBoardHome></DashBoardHome>
+        },
+        {
           path:'/dashboard/pending',
-          element:<PendingAssignment></PendingAssignment>
+          element:<AdminRoute><PendingAssignment></PendingAssignment></AdminRoute>
         },
         {
           path:'/dashboard/student',
-          element:<Student></Student>
+          element:<AdminRoute><Student></Student></AdminRoute>
         },
         {
           path:'/dashboard/teacherHome',
-          element:<TeacherHome></TeacherHome>
-        }
+          element:<AdminRoute><TeacherHome></TeacherHome></AdminRoute>
+        },
+        
+          {
+            path:'/dashboard/mark/:id',
+            element:<GiveMark></GiveMark>,
+            loader:({params})=>fetch(`${import.meta.env.VITE_URL}/mark/${params.id}`)
+          },
+          {
+            path:'/dashboard/mySubmitted',
+            element:<Mysubmitted></Mysubmitted>
+          },
+          {
+            path:'/dashboard/studentHome',
+            element:<StudentHome></StudentHome>
+          },
+          {
+            path:'/dashboard/academicResult',
+            element:<AcademicResult></AcademicResult>
+          },
+          {
+            path:'/dashboard/personalNote',
+            element:<PersonalNote></PersonalNote>
+          },
+          {
+            path:'/dashboard/achievement',
+            element:<Achivement></Achivement>
+          }
+
       ]
     }
   ])

@@ -4,6 +4,7 @@ import Swal from 'sweetalert2'
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 const Register = () => {
     const location=useLocation()
     const from=location.state||'/'
@@ -43,17 +44,27 @@ const Register = () => {
         }
         try{
      const result=await createUser(email, password)
-            .then( async() => {
+            .then( async(data) => {
                await updateUserProfile(name, photURL)
                 setUser[{...user,displayName:name,photURL:photURL}]
-                Swal.fire({
-                    position: "top-center",
-                    icon: "success",
-                    title: "Registration success",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-                navigate(from)
+                const userInfo={
+                    email:email,
+                    name:name
+                }
+                const res=await axios.post(`${import.meta.env.VITE_URL}/user`,userInfo)
+                .then(res=>{
+                    console.log(res);
+                    Swal.fire({
+                        position: "top-center",
+                        icon: "success",
+                        title: "Registration success",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    navigate(from)
+                })
+               
+                
             })
             .catch((err) => {
                 Swal.fire({

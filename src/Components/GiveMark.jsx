@@ -39,7 +39,7 @@ const GiveMark = () => {
                     timer: 1500
                 });
                 }
-               navigate('/pending')
+               navigate('/dashboard/pending')
             })
             .catch((err)=>{
                 console.log(err);

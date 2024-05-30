@@ -56,14 +56,23 @@ const Login = () => {
             email:result?.user?.email,
         },{withCredentials:true})
         console.log(data);
-        Swal.fire({
-            position: "top-center",
-            icon: "success",
-            title: " Login with Google success",
-            showConfirmButton: false,
-            timer: 1500
-        });
-        navigate(from)
+        const userInfo={
+            email:result.email,
+            name:result.displayName
+        }
+        const res=await axios.post(`${import.meta.env.VITE_URL}/user`,userInfo)
+        .then(res=>{
+            console.log(res);
+            Swal.fire({
+                position: "top-center",
+                icon: "success",
+                title: " Login with Google success",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            navigate(from)
+        })
+       
       })
       .catch((err)=>{
         Swal.fire({
