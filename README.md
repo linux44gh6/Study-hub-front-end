@@ -17,3 +17,11 @@
  4.personal data is secured from unknown  person
 
  5.All image host into imageBB
+
+How To use run this file into your local computer-
+
+1.clone this file into your local computer- https://github.com/linux44gh6/Study-hub-front-end.git
+
+2.run this commen- npm install
+
+3.Run it localy- npm run dev
